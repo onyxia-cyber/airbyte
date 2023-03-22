@@ -1,0 +1,166 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "etag": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "properties": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "owner": {
+                  "type": "object",
+                  "properties": {
+                    "objectId": {
+                      "type": "null"
+                    },
+                    "email": {
+                      "type": "null"
+                    },
+                    "assignedTo": {
+                      "type": "null"
+                    },
+                    "userPrincipalName": {
+                      "type": "null"
+                    },
+                    "ownerType": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "objectId",
+                    "email",
+                    "assignedTo",
+                    "userPrincipalName",
+                    "ownerType"
+                  ]
+                },
+                "labels": {
+                  "type": "array",
+                  "items": {}
+                },
+                "firstActivityTimeUtc": {
+                  "type": "string"
+                },
+                "lastActivityTimeUtc": {
+                  "type": "string"
+                },
+                "lastModifiedTimeUtc": {
+                  "type": "string"
+                },
+                "createdTimeUtc": {
+                  "type": "string"
+                },
+                "incidentNumber": {
+                  "type": "integer"
+                },
+                "additionalData": {
+                  "type": "object",
+                  "properties": {
+                    "alertsCount": {
+                      "type": "integer"
+                    },
+                    "bookmarksCount": {
+                      "type": "integer"
+                    },
+                    "commentsCount": {
+                      "type": "integer"
+                    },
+                    "alertProductNames": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "tactics": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "techniques": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "alertsCount",
+                    "bookmarksCount",
+                    "commentsCount",
+                    "alertProductNames",
+                    "tactics",
+                    "techniques"
+                  ]
+                },
+                "relatedAnalyticRuleIds": {
+                  "type": "array",
+                  "items": {}
+                },
+                "incidentUrl": {
+                  "type": "string"
+                },
+                "providerName": {
+                  "type": "string"
+                },
+                "providerIncidentId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "title",
+                "description",
+                "severity",
+                "status",
+                "owner",
+                "labels",
+                "firstActivityTimeUtc",
+                "lastActivityTimeUtc",
+                "lastModifiedTimeUtc",
+                "createdTimeUtc",
+                "incidentNumber",
+                "additionalData",
+                "relatedAnalyticRuleIds",
+                "incidentUrl",
+                "providerName",
+                "providerIncidentId"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "etag",
+            "type",
+            "properties"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "value"
+  ]
+}
