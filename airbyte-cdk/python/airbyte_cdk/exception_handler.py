@@ -8,7 +8,7 @@ import sys
 from airbyte_cdk.utils.traced_exception import AirbyteTracedException
 
 
-def init_uncaught_exception_handler(logger: logging.Logger) -> None:
+def init_uncaught_exception_handler(logger: logging.Logger, development_mode: bool = False) -> None:
     """
     Handles uncaught exceptions by emitting an AirbyteTraceMessage and making sure they are not
     printed to the console without having secrets removed.
@@ -31,4 +31,5 @@ def init_uncaught_exception_handler(logger: logging.Logger) -> None:
 
         traced_exc.emit_message()
 
-    sys.excepthook = hook_fn
+    if not development_mode:
+        sys.excepthook = hook_fn
