@@ -6,6 +6,7 @@
 import argparse
 import importlib
 import logging
+import os
 import os.path
 import sys
 import tempfile
@@ -24,8 +25,8 @@ logger = init_logger("airbyte")
 
 
 class AirbyteEntrypoint(object):
-    def __init__(self, source: Source):
-        init_uncaught_exception_handler(logger)
+    def __init__(self, source: Source, development_mode: bool = False):
+        init_uncaught_exception_handler(logger, development_mode)
         self.source = source
         self.logger = logging.getLogger(f"airbyte.{getattr(source, 'name', '')}")
 
@@ -126,7 +127,8 @@ class AirbyteEntrypoint(object):
 
 
 def launch(source: Source, args: List[str]):
-    source_entrypoint = AirbyteEntrypoint(source)
+    development_mode = os.environ.get("AIRBYTE_DEVELOPMENT_MODE", False)
+    source_entrypoint = AirbyteEntrypoint(source, development_mode)
     parsed_args = source_entrypoint.parse_args(args)
     for message in source_entrypoint.run(parsed_args):
         print(message)
